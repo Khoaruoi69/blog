@@ -19,11 +19,10 @@ title: Categories
         
               <li>
                 
-                  <a href="{{ site.baseurl }}/category/{{ category[0] | replace:' ','-' }}" data-toggle="tab">
+                  <a href="{{ site.baseurl }}/category/{{ category[1].url | replace:' ','-' }}" data-toggle="tab">
                       {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
                   </a>
                   <div>{{category[1]}}</div>
-                  <div>{{category[1].url}}</div>
               </li>
           {% endfor %}
       {% endif %}
