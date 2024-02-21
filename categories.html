@@ -23,7 +23,7 @@ title: Categories
                         </a>
                     </h3>
                     <ul>
-                        {% for cte in category %}
+                        {% for cte in category[1] %}
                             {% for cte01 in cte %}
                                 <li>
                                     <a href="{{ site.baseurl }}{{ cte01.url }}">{{ cte01.title }}</a>
