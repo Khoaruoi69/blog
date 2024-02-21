@@ -15,22 +15,20 @@ title: Categories
             </li>
         {% endfor %}
       {% else %}
-        {% for category in categories_list %}
-            <li>
-                <a href="{{ site.baseurl }}/{{ site.category_path }}#{{ category[0] | replace:' ','-' }}-ref" data-toggle="tab">
-                    {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
-                </a>
-                <li>
-                   lll {{site.categories[category]}}
-                   <a> {{category[0].title}}v</a>
-                </li>
-                {% for cte in category %}
-                <li>
-                    <a> {{cte[0].title}}--0111</a>
-                </li>
-                {% endfor%}
-            </li>
-        {% endfor %}
+      {% for category in categories_list %}
+      <li>
+          <a href="{{ site.baseurl }}/{{ site.category_path }}#{{ category[0] | replace:' ','-' }}-ref" data-toggle="tab">
+              {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
+          </a>
+          <ul>
+              {% for cte in category %}
+                  <li>
+                      <a href="{{ site.baseurl }}{{ cte[0].url }}">{{ cte[0].title }}</a>
+                  </li>
+              {% endfor %}
+          </ul>
+      </li>
+  {% endfor %}
       {% endif %}
       {% assign categories_list = nil %}
     </ul>
