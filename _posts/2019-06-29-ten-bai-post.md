@@ -1,7 +1,7 @@
 ---
 layout: post
 title: bai viet 1
-categories: baiviet1 
+categories: baiviet01 
 ---
 
 Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
