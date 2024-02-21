@@ -16,7 +16,7 @@ title: Categories
       {% else %}
           {% for category in categories_list %}
               <li>
-                  <a href="{{ site.baseurl }}/_categories/{{ category[0] | replace:' ','-' }}.html" data-toggle="tab">
+                  <a href="{{ site.baseurl }}/category/{{ category[0] | replace:' ','-' }}.html" data-toggle="tab">
                       {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
                   </a>
               </li>
