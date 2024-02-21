@@ -16,8 +16,10 @@ title: Categories
           {% endfor %}
       {% else %}
           {% for category in categories_list %}
+        
               <li>
-                  <a href="{{ site.baseurl }}/category/{{ category[0] | replace:' ','-' }}-ref" data-toggle="tab">
+                {{console.log("adasdaasdasdasd")}}
+                  <a href="{{ site.baseurl }}/category/{{ category[0].url | replace:' ','-' }}" data-toggle="tab">
                       {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
                   </a>
               </li>
