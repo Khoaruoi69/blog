@@ -70,7 +70,7 @@ h2 {
     line-height: 1.4;
   }
   a {
-    color: inherit;
+    color: $white;
   }
 }
 
@@ -85,6 +85,7 @@ h4 {
 
 p {
   margin: 15px 0;
+  color: $white;
 }
 
 a {
