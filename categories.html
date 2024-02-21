@@ -22,8 +22,13 @@ title: Categories
                 </a>
                 <li>
                    lll {{site.categories[category]}}
-                   <a> {{category[0]}}v</a>
+                   <a> {{category[0].title}}v</a>
                 </li>
+                {% for cte in category %}
+                <li>
+                    <a> {{cte[0].title}}--0111</a>
+                </li>
+                {% endfor%}
             </li>
         {% endfor %}
       {% endif %}
