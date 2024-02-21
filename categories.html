@@ -17,18 +17,19 @@ title: Categories
       {% else %}
       {% for category in categories_list %}
       <li>
-          <a href="{{ site.baseurl }}/{{ site.category_path }}#{{ category[0] | replace:' ','-' }}-ref" data-toggle="tab">
+          <h3 href="{{ site.baseurl }}/{{ site.category_path }}#{{ category[0] | replace:' ','-' }}-ref" data-toggle="tab">
               {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
-          </a>
-          <ul>
-              {% for cte in category %}
-                    {% for cte01 in cte %}
-                        <li>
-                             <a href="{{ site.baseurl }}{{ cte01.url }}">{{ cte01.title }}</a>
-                        </li>
-                    {% endfor %}
-              {% endfor %}
-          </ul>
+          </h3>
+        {% for cte in category %}
+            <ul>
+                {% for cte01 in cte %}
+                    <li>
+                        <a href="{{ site.baseurl }}{{ cte01.url }}">{{ cte01.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+          
       </li>
   {% endfor %}
       {% endif %}
