@@ -60,8 +60,18 @@ h1 {
 
 h2 {
   font-size: 24px;
+  font-family: $helveticaNeue;
   color: #0e0f0f;
   font-weight: bold;
+  line-height: 1.7;
+  padding: 0;
+
+  @include mobile {
+    line-height: 1.4;
+  }
+  a {
+    color: inherit;
+  }
 }
 
 h3 {
