@@ -8,9 +8,9 @@ title: Categories
       {% if categories_list.first[0] == null %}
           {% for category in categories_list %}
               <li>
-                  <a href="{{ site.baseurl }}/{{ site.categories_path }}#{{ category | replace:' ','-' }}-ref" data-toggle="tab">
-                      {{ category | capitalize }} <span class="badge pull-right">({{ site.categories[category].size }} post)</span>
-                  </a>
+                <a href="{{ site.baseurl }}/category/{{ category[0] | replace:' ','-' }}.html" data-toggle="tab">
+                  {{ category | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
+              </a>
               </li>
           {% endfor %}
       {% else %}
