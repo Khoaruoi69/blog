@@ -43,7 +43,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 
   line-height: 1.7;
-  margin: 1em 0 15px;
   padding: 0;
 
   @include mobile {
@@ -163,7 +162,7 @@ img {
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  // border-bottom: 1px solid $lightGray;
 
   @include mobile {
     text-align: center;
@@ -219,7 +218,7 @@ img {
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-right: 25px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
 
@@ -286,10 +285,10 @@ nav {
 }
 
 .wrapper-footer {
-  margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  // margin-top: 50px;
+  // border-top: 1px solid #ddd;
+  // border-bottom: 1px solid #ddd;
+  // background-color: $lightGray;
 }
 
 footer {
