@@ -77,7 +77,7 @@ p {
 }
 
 a {
-  color: #4572a4;
+  color: $black;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
@@ -257,7 +257,7 @@ nav {
   height: 190px;
   border: 4px solid #ccc;
   border-radius: 10px;
-  background-color: #3d6a96;
+  background-color: #6f8398;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
