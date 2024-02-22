@@ -1,10 +1,9 @@
 ---
 layout: post
-title: You're up and running c123!
+title: Function trong java 8
 categories: Java-8
 ---
-### Function trong java 8
-#### 1. Giới thiệu Function<T,R>
+### 1. Giới thiệu Function<T,R>
 Java 8 cung cấp sẵn cho chúng ta rất nhiều Functional Interface và Function<T, R> là một trong số đó. Cũng giống như những functional interface khác, Function<T, R> có thể sử dụng cho lambda expression hoặc method reference cho một mục đích cụ thể nào đó. Function<T,R> chỉ có một method trừu tượng duy nhất chấp nhận một tham số đầu vào, và method trả về một đối tượng khác.
 
 Mục đích chính của Function là giúp chúng ta dễ dàng chuyển một đối tượng từ kiểu dữ liệu này sang kiểu dữ liệu khác.
@@ -21,5 +20,7 @@ Interface Function còn cung cấp một phương thức mặc định (default 
 Function<V, R> compose(Function<? super V, ? extends T> before) : phương thức này trả về một function gộp mà nó đã áp dụng before Function lên đối số đầu vào, sau đó áp dụng function lên dữ liệu đầu ra.
 Function<T, V> andThen(Function<? super R, ? extends V> after) : phương thức này trả về một Function gộp mà nó đã áp dụng function lên dữ liệu đầu vào và sau đó áp dụng tiếp after function lên kết quả đầu ra.
 Function<T, T> identity() : phương thức này trả về một function luôn trả về đối số đầu vào của nó.
+
+
 **Tham khảo:**
- - https://gpcoder.com/3976-function-trong-java-8/
+ *https://gpcoder.com/3976-function-trong-java-8/*
