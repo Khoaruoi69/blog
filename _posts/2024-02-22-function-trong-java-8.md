@@ -50,7 +50,7 @@ public class FunctionExample1 {
 
 **Tham khảo:**
 
-        [Function trong java 8](https://gpcoder.com/3976-function-trong-java-8)
+        [Function trong java 8 (https://gpcoder.com/3976-function-trong-java-8)](https://gpcoder.com/3976-function-trong-java-8)
 
 
  
