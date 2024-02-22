@@ -26,7 +26,14 @@ Function<T, T> identity() : phương thức này trả về một function luôn
 
 
 **Tham khảo:**
- <p>
-    <https://gpcoder.com/3976-function-trong-java-8/>
- </p>
+
+<ul>
+    <li>
+        <p>
+           <https://gpcoder.com/3976-function-trong-java-8/>
+        </p>
+    </li>
+</ul>
+
+
  
