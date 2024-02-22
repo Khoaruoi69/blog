@@ -24,10 +24,32 @@ Function<T, V> andThen(Function<? super R, ? extends V> after) : phương thức
 
 Function<T, T> identity() : phương thức này trả về một function luôn trả về đối số đầu vào của nó.
 
+### 2. Một số ví dụ
+
+#### 2.1 Suwr dungj R apply(T t)
+
+- package com.gpcoder.function;
+ 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.function.Function;
+ 
+public class FunctionExample1 {
+ 
+    public static void main(String[] args) {
+ 
+        Function<String, Integer> numberConverter = (str) -> Integer.parseInt(str);
+        System.out.println(numberConverter.apply("1")); // 1
+ 
+        Function<LocalDate, String> dateConverter = (d) -> d.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        System.out.println(dateConverter.apply(LocalDate.now())); // 27/05/2018
+    }
+}
+- 
 
 **Tham khảo:**
 
-    - [Function trong Java 8](https://gpcoder.com/3976-function-trong-java-8)
+    <https://gpcoder.com/3976-function-trong-java-8>
 
 
  
