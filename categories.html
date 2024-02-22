@@ -18,9 +18,7 @@ title: Categories
             {% for category in categories_list %}
                 <li>
                     <h3>
-                        <a href="{{ site.baseurl }}/{{ site.category_path }}#{{ category[0] | replace:' ','-' }}-ref" data-toggle="tab">
-                            {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
-                        </a>
+                        {{ category[0] | capitalize }} <span class="badge pull-right">({{ category[1].size }} post)</span>
                     </h3>
                     <ul>
                         {% for cte in category %}

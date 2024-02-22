@@ -29,7 +29,7 @@ Function<T, T> identity() : phương thức này trả về một function luôn
 
 <ul>
     <li>
-           <https://gpcoder.com/3976-function-trong-java-8/>
+           <https://gpcoder.com/3976-function-trong-java-8>
     </li>
 </ul>
 
