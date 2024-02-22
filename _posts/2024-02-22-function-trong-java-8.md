@@ -26,7 +26,7 @@ Function<T, T> identity() : phương thức này trả về một function luôn
 
 ### 2. Một số ví dụ
 
-#### 2.1 Suwr dungj R apply(T t)
+#### 2.1 Sử dụng R apply(T t)
 
 ``` java
 package com.gpcoder.function;
@@ -50,7 +50,7 @@ public class FunctionExample1 {
 
 **Tham khảo:**
 
-    <https://gpcoder.com/3976-function-trong-java-8>
+[Function trong java 8](https://gpcoder.com/3976-function-trong-java-8)
 
 
  
