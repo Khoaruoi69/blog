@@ -28,7 +28,8 @@ Function<T, T> identity() : phương thức này trả về một function luôn
 
 #### 2.1 Suwr dungj R apply(T t)
 
-- package com.gpcoder.function;
+``` java
+package com.gpcoder.function;
  
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -44,8 +45,8 @@ public class FunctionExample1 {
         Function<LocalDate, String> dateConverter = (d) -> d.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         System.out.println(dateConverter.apply(LocalDate.now())); // 27/05/2018
     }
-}
-- 
+} 
+```
 
 **Tham khảo:**
 
