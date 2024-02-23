@@ -13,15 +13,20 @@ I make lunch. I normally cook a lot of food because then i can eat it on Monday 
 In the afternoon, I usually watch the Formula 1 **race**, but there aren't races every week. Finally, in the evening, I prepare my classes for the week because
 I am a teacher. Mondays, Tuesdays, Wednesdays and Thursdays are very **similar** for me, but Mondays are **definitely** the worst day of the week.
 I don't like Mondays because I am very tired and because the feel very long. When I wake up on these days, I brush my teeth, I get dressed, i brush my hair,
-I have breakfast and then I go to work at 7:30 AM.  I always have my lunch at work because then I don't have to prepare it. In the UK, people normally
-have breakfast in the morning after then wake up and they normally have some **cereals** and milk and a cup of coffee or a cup of tea. Then, at 12 o'clock
-or 1 o'clock they have their lunch, which is nornally a sandwich, a salad or something else that is**quite small**.
+I have breakfast and then I go to work at 7:30 AM.  I always have my lunch at work because then I don't have to prepare it.
+
+
+ In the UK, people normally have breakfast in the morning after then wake up and they normally have some **cereals** and milk and a cup of coffee or a cup of tea. Then, at 12 o'clock or 1 o'clock they have their lunch, which is nornally a sandwich, a salad or something else that is**quite small**.
 I come home at 5 PM and after that I sometimes have **extra** English classes in the evenings. I normally have dinner and before I go to bed I play with
 my cat because she has got a lot of energy. If I don't play with my cat, she doesn't sleep at night, so this is an important thing for me to do.
+
+
 In the UK people normally have dinner at 6 o'clock or a bit later, when they come back from work.This is the biggerst **meal** of the day and the **typical** British
 dinner is a **roast** dinner, which includes some meat, chicken or fish, some potatoes, some vegetables like carrots, broccoli or peas. However, people **obviously** don't
 eat this every day, and the might eat a **pasta** dinner, curry, a pie or something like that. Before going to bed, some people have a snack that is called supper.
 **Depending on** if you are hungry or not, people will have a bigger or a smaller super.
+
+
 On Fridays, I am normally happier because it is the weekend. In the evening i go for a walk or watch a series on Netfix. I like Fridays but don't have a lot of energy
 so i normally  relax and stay at home. Finally, I normally eat out on Saturdays. My favorite type of restaurants are Italian restaurants because I love pasta and pizza.
 After having dinner, I go to the supermarket or to the shopping center because I like to buy the food that I will eat during the week.
