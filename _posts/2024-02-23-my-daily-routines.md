@@ -5,6 +5,8 @@ categories: Learn-English
 ---
 
 I normmally do the same things every week but some days i do different things.
+
+
 In the United Kingdom, Sunday is normally the first day on the calendar, so I am going to tell you what I normally do on Sundays first.
 For me, Sundays are for **resting and relaxing**. In the morning, I clear the living room, the kitchen and the bathroom. When I finished cleaning,
 I make lunch. I normally cook a lot of food because then i can eat it on Monday or Tuesday, for example, and that way I don't have to cook every day.
@@ -58,7 +60,7 @@ just a **typical** week for me.
 
  + **definitely:** a way of *emphasizing* that something is true and that there is no doubt about it 
 
- *example:*
+ *example*:
 
     -I definitely remember sending the letter.
 
@@ -68,13 +70,13 @@ just a **typical** week for me.
 
  + **emphasize:** to give special importance to something
 
- *example:*
+ *example*:
 
     -speech 'This must be our top priority', he emphasized.
 
  + **typical:** having the usual *qualities* or *features* of a *particular* type of person, thing or group.
 
-*Example:*
+*Example*:
 
     -a typical Italian cafe
 
