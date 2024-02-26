@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Optional trong Java
-categories: Java 8
+categories: Java-8
 ---
 
 Trong Java 8, chúng ta có một lớp Optional<T> mới được giới thiệu trong gói java.util. 
