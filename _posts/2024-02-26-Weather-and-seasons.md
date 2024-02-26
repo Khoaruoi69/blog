@@ -10,7 +10,8 @@ In the UK, we have the four seasons. We have winter, when it is a little bit  co
 and there are a lot of flowers, thirdly there is the summer, which is hot but not very hot if we compare it to other countries like Spain, and then
 finally we have autumn, which is similar to spring but the leaves of the trees fall off and it is very beautiful. 
 
-which is your favorite seasons ? My favorite season is summer because it is quite hot and you can do a lot of things outside, for example,
+**which is your favorite seasons ?** 
+My favorite season is summer because it is quite hot and you can do a lot of things outside, for example,
 you can go for walk on the beach, you can be outside in your garden, you can have *barbecue* or just go to the park.
 
 **Is your country popular with tourists in every seasons ?** 
@@ -18,7 +19,7 @@ you can go for walk on the beach, you can be outside in your garden, you can hav
 I think in UK is  popular tourists in every season but the most important season for tourism is summer. There are a lot of people that come to the UK 
 in June, July, August but a lot of people come to LonDon, for example, during all the year.
 
-*in the second part of this speaking test i have to describe a type of weather that i don't like*
+*In the second part of this speaking test i have to describe a type of weather that i don't like*
 
 i don't like rain. This is not very good because in England there is a lot of rain. Sometimes it rains every day for two weeksk, but other times it once per
 week, so it just *depends* on the week, on the seasons really. ... i don't like rain is because when is raining you can't go outside and do you thing that you like 
@@ -45,11 +46,16 @@ it rains.
 ### Vocabulary: 
 
 + depend (verd): according to
+
 *Example:*
+
 Starting salary varies from $1000 to $30000, depending on experience.
 
 + **that depends | it (all) depends:** used to say that you are not *certain* about something because other things have to be considered.
+
 *Example:*
+
 'Is he coming ?' 'That depends. He may not have the time. '
+
  I don't know if we can help-it all depends
 + 

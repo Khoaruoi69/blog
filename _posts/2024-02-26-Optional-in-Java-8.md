@@ -21,13 +21,13 @@ Nó được sử dụng để kiểm tra xem một biến có giá trị tồn 
 + void ifPresent(Consumer<? super T> consumer) : Nếu như đối tượng Optional đang chứa giá trị, nó sẽ áp dụng consumer được truyền vào cho giá trị của nó. Ngược lại thì không làm gì cả.
 
 + boolean isPresent() : Phương thức này được sử dụng để kiểm tra xem trong đối tượng Optional có đang chứa giá trị hay không. Giá trị trả về là True nếu có giá trị và ngược lại trả về false.
- orElse(T other) : Trả về giá trị của đối tượng Optional nếu có, ngược lại nó sẽ trả về đối tượng other mà bạn đã truyền vào phương thức này.
++ orElse(T other) : Trả về giá trị của đối tượng Optional nếu có, ngược lại nó sẽ trả về đối tượng other mà bạn đã truyền vào phương thức này.
 
-T orElseGet(Supplier<? extends T> other) : Trả về giá trị nếu tồn tại, ngược lại nó sẽ gọi other mà bạn đã truyền vào sau đó trả về kết quả của Supplier.
++ T orElseGet(Supplier<? extends T> other) : Trả về giá trị nếu tồn tại, ngược lại nó sẽ gọi other mà bạn đã truyền vào sau đó trả về kết quả của Supplier.
 
-<U>Optional<U> map(Function<? super T,? extends U> mapper) : Nếu như có giá trị nó sẽ áp dụng Function lên giá trị đó và nếu kết quả sau khi áp dụng Function khác null thì nó sẽ trả về một Optional chứa giá trị của kết quả sau khi áp dụng Function.
++ <U>Optional<U> map(Function<? super T,? extends U> mapper) : Nếu như có giá trị nó sẽ áp dụng Function lên giá trị đó và nếu kết quả sau khi áp dụng Function khác null thì nó sẽ trả về một Optional chứa giá trị của kết quả sau khi áp dụng Function.
 
-<U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper) : Nếu như có giá trị hiện diện trong Optional, nó sẽ áp dụng Function được truyền vào cho nó và trả về một Optional với kiểu U, ngược lại thì sẽ return về một empty Optional.
++ <U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper) : Nếu như có giá trị hiện diện trong Optional, nó sẽ áp dụng Function được truyền vào cho nó và trả về một Optional với kiểu U, ngược lại thì sẽ return về một empty Optional.
 
 + Optional<T> filter(Predicate<? super <T> predicate) : Nếu như có giá trị hiện diện trong đối tượng Optional này và giá trị của nó khớp với Predicate truyền vào, nó sẽ trả về một Optional chứa giá trị đó, mặc khác sẽ trả về một Optional rỗng.
 
@@ -55,38 +55,6 @@ T orElseGet(Supplier<? extends T> other) : Trả về giá trị nếu tồn t�
 Kiểm tra giá trị  null trong Java-8 và trước Java 8
 
 ``` java 
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
 package com.gpcoder.optional;
  
 import java.util.Optional;
