@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Xử lý ngoại lệ trong Java ( Exception Handling )
+title: Exception Handling in Java
 categories: Exception-Handling
 ---
 

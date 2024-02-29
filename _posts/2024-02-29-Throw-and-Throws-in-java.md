@@ -196,3 +196,7 @@ Chỉ ngoại lệ **Checked**, bởi vì:
 ### 3. Sự khác nhau giữa throw và throws trong java
 
 ![_config.yml]({{ site.baseurl }}/images/compare-throw-vs-throws.png)
+
+**Tài liệu tham khảo:**
+
+*[Từ khóa Throw và Throws trong java](https://gpcoder.com/2447-tu-khoa-throw-va-throws-trong-java/)*
