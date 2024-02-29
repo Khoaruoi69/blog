@@ -4,8 +4,6 @@ title: Xử lý ngoại lệ trong Java ( Exception Handling )
 categories: Exception-Handling
 ---
 
-## Hướng dẫn xử lý ngoại lệ (Exception Handling) trong Java
-
 **Hướng dẫn xử lý ngoại lệ (Exception Handling) trong Java, bao gồm:**
 
 + Hệ thống phân cấp ngoại lệ trong Java.
@@ -64,7 +62,7 @@ Các lớp extends từ lớp Throwable ngoại trừ RuntimeException và Error
 
 *ví dụ:* IOException, FileNotFoundException, NoSuchFieldException, ….
 
-![_config.yml]({{ site.baseurl }}/images/example-checked-exception.png)
+![_config.yml]({{ site.baseurl }}/images/example-checked-excepption.png)
 
 **Unchecked exceptions**
 
