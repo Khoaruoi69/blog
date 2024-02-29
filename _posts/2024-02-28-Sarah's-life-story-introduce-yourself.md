@@ -100,3 +100,16 @@ I can **reunite** my family and friends.
 + **achieve** /əˈtʃiːv/ (verb) : *(đạt được)* **achieve something** to succeed in reaching *( đạt )* a particular goal, status *( địa vị)*, or standard, especially by making
 an **effort** *( cố gắng )* for a long time.
 
+
+
+- 28 year old
+- London in EngLand
+- North 
+- Sister 
+- cooking
+- pet. he has a cat
+- 12 year old
+- saturday
+- autumn
+- August
+- 
