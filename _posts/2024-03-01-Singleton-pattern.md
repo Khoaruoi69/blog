@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Design Pattern
+title: Singleton Pattern
 categories: Design-pattern creational-design-pattern
 ---
 
