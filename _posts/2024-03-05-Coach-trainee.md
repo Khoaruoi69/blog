@@ -121,3 +121,41 @@ public class ServiceController {
 **tạo Client service**
 
 ![_config.yml]({{ site.baseurl }}/images/client.png)
+
+**Tạo Controller**: dùng để call đến server getbody()
+
+``` java
+package com.test.client.controller;
+
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ClientController {
+    @Autowired
+    private EurekaClient client;
+    @Autowired
+    private RestTemplateBuilder templateBuilder;
+
+    @RequestMapping("/")
+    public String callService(){
+        InstanceInfo instanceInfo = client.getNextServerFromEureka("service", false);
+        String url = instanceInfo.getHomePageUrl();
+
+        RestTemplate restTemplate = templateBuilder.build();
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,null,String.class);
+        return response.getBody();
+    }
+}
+```
+
+### Spring microservices phần 4 - Tạo config server để đọc thông tin cấu hình từ github
+
+![_config.yml]({{ site.baseurl }}/images/config-server-github.png)
