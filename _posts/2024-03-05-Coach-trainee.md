@@ -159,3 +159,168 @@ public class ClientController {
 ### Spring microservices phần 4 - Tạo config server để đọc thông tin cấu hình từ github
 
 ![_config.yml]({{ site.baseurl }}/images/config-server-github.png)
+
+**Tạo git repo**
+![_config.yml]({{ site.baseurl }}/images/git-repo.png)
+
+*Link Git repo:* 
+
+*[spring-cloud-sample-config-repo](https://github.com/Khoaruoi69/spring-cloud-sample-config-repo)*
+
+**Tạo config server**
+
+![_config.yml]({{ site.baseurl }}/images/config-server.png)
+
+```java
+package com.test.configserver;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.config.server.EnableConfigServer;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableConfigServer
+public class ConfigserverApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConfigserverApplication.class, args);
+	}
+
+}
+
+```
+
+**application properties**
+
+```java
+
+spring.application.name=config-service
+server.port=8888
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+spring.cloud.config.server.git.uri =https://github.com/Khoaruoi69/spring-cloud-sample-config-repo.git
+spring.cloud.config.server.git.default-label=main
+
+```
+
+**run port 8888** /abc/default -- /config-server/default --- config-server/prod
+
+
+
+### Spring microservices phần 5 - Tạo config client và đọc thông tin cấu hình thông qua config server
+
+![_config.yml]({{ site.baseurl }}/images/config-client.png)
+
+**Tạo ClientConfig**
+
+```java
+package com.test.configclient.config;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = "sample")
+public class ClientConfig {
+    private String properties1;
+
+    public String getProperties1() {
+        return properties1;
+    }
+
+    public void setProperties1(String properties1) {
+        this.properties1 = properties1;
+    }
+}
+
+```
+
+ **Tạo ConfigClientController**
+
+ ```java
+ package com.test.configclient.controller;
+
+import com.test.configclient.config.ClientConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ConfigClientController {
+    @Autowired
+    private ClientConfig clientConfig;
+
+    @Value("${sample.properties2}")
+    private String property2;
+    @RequestMapping("/config")
+    public String printConfig() {
+        return clientConfig.getProperties1() + "------" + property2;
+    }
+}
+
+ ```
+
+ **Bootstrap.properties**
+
+ ```java
+ 
+spring.application.name=config-client
+spring.cloud.config.discovery.enabled=true
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+spring.profiles.active=prod
+server.port=7007
+ ```
+
+### Spring microservices phần 6 - Hướng dẫn cách refresh config client để cập nhật thông tin cấu hình
+
+
+**Change information config: prod.properties**
+
+```java
+sample.properties1=property 1 for config client with prob profile change
+sample.properties2=property 2 for config client with prob profile change
+```
+
+**ClientConfig**
+
+```java
+package com.test.configclient.controller;
+
+import com.test.configclient.config.ClientConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.RequestScope;
+
+@RestController
+@RequestScope
+public class ConfigClientController {
+    @Autowired
+    private ClientConfig clientConfig;
+
+    @Value("${sample.properties2}")
+    private String property2;
+    @RequestMapping("/config")
+    public String printConfig() {
+        return clientConfig.getProperties1() + "------" + property2;
+    }
+}
+
+```
+
+**boostrap.properties**
+
+```java
+
+spring.application.name=config-client
+spring.cloud.config.discovery.enabled=true
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+spring.profiles.active=prod
+server.port=7007
+# refresh update information config
+management.endpoints.web.exposure.include=refresh   
+# call post man : POST localhost:8080/actuator/refresh
+```
