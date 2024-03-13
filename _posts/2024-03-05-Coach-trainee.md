@@ -1,6 +1,6 @@
 ---
 layout: post
-title: City Life
+title:  Coach-trainee -- Spring config
 categories: Coach-trainee
 ---
 
