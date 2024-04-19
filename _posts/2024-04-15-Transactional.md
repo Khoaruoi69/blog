@@ -17,7 +17,7 @@ tính nhất quán giữa các thao tác trong *giao dịch.*
 
 + **Tính bền vững (Durability):** Đảm bảo rằng các thay đổi trong giao dịch sẽ được lưu trữ vĩnh viễn, kể cả trong trường hợp lỗi hệ thống hoặc điện toán.
 
-- Các giao dịch thường tuân theo nguyên tắc ACID:
+Các giao dịch thường tuân theo nguyên tắc ACID:
 
 + **Atomicity (Nguyên tố ):** Mọi thao tác trong giao dịch phải **được thực hiện** hoặc **Không thực hiện gì cả**. Không có trạng thái trung gian.
 
