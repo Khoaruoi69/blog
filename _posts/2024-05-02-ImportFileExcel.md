@@ -638,3 +638,227 @@ public class ImportDTO {
 }
 
 ```
+
+
+- Update rollback
+
+```java
+
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.BeanUtils;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+
+import java.io.InputStream;
+import java.text.ParseException;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Component
+@RequiredArgsConstructor
+@Slf4j
+public class ReadFileExcelHoliday extends AbstractService {
+
+    private final ResponseUtil responseUtil;
+    private final HolidayRepository holidayRepository;
+    private final HolidayService holidayService;
+    private static String SHEET = "data";
+    private static String[] HEADERS = {"Holiday Name", "Holiday Date"};
+
+    /**
+     * The function ValidateListStaffInfo, used to check input data from Excel
+     *
+     * @param inputStream
+     */
+    public ResponseEntity<Response> importFileExcelListHoliday(InputStream inputStream) {
+
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+            XSSFSheet sheet = workbook.getSheet(SHEET);
+            if (sheet == null) {
+                return responseUtil.errorResponse(ReturnCode.ERROR, "Sheet does not exist");
+            }
+            Iterator<Row> iteratorRow = sheet.iterator();
+            List<String> mapHeader = mapHeaderFile(sheet, workbook);
+            Boolean checkHeader = validateMapHeader(mapHeader, HEADERS);
+            if (!checkHeader) {
+                return responseUtil.errorResponse(ERROR, "Header file error.");
+            }
+            List<Map<String, String>> listDataFile = dataFile(iteratorRow, mapHeader);
+
+            // Parsing file content into list of object
+            List<HolidayExcelDto> parsedObjects = this.parsedObjects(listDataFile);
+
+            // check file is blank
+            if (CollectionUtils.isEmpty(parsedObjects)) {
+                return responseUtil.errorResponse(ERROR, "File Excel import is blank");
+            }
+
+            // remove object null data
+            for (HolidayExcelDto holidayExcelDto : new ArrayList<>(parsedObjects)) {
+                if (holidayExcelDto.isEmpty(holidayExcelDto)) {
+                    parsedObjects.remove(holidayExcelDto);
+                }
+            }
+
+            // Filter valid data
+            List<HolidayExcelDto> listValidData = this.filterValidData(parsedObjects);
+            // Import file excel
+            if (listValidData.isEmpty()) {
+                return createListHoliday(parsedObjects);
+            }
+            log.info("after validate staff info: number of header from file = {}, " +
+                    "number of header from server = {}, " +
+                    "invalid row = {}", listValidData.size(), parsedObjects.size(), listValidData.size() - parsedObjects.size());
+
+            final int total = parsedObjects.size();
+            final int inValidRows = listValidData.size();
+            final int validRows = total - inValidRows;
+
+            final UploadDto<HolidayExcelDto> uploadDto = new UploadDto<>();
+            uploadDto.setTotalRows(total);
+            uploadDto.setValidRows(validRows);
+            uploadDto.setInvalidRows(inValidRows);
+            uploadDto.setDetailRecordDtos(listValidData);
+
+            return responseUtil.response(ERROR, uploadDto, "Error import file Excel");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private List<HolidayExcelDto> parsedObjects(List<Map<String, String>> listDataFile) {
+        String[] header = HEADERS;
+        return listDataFile
+                .stream()
+                .map(data -> {
+                    HolidayExcelDto holidayExcelDto = new HolidayExcelDto();
+                    holidayExcelDto.setHolidayName(getCellValue(data.get(getFileHeaderByIndex(header, 0))));
+                    holidayExcelDto.setHolidayDate(getCellValue(data.get(getFileHeaderByIndex(header, 1))));
+                    return holidayExcelDto;
+                }).collect(Collectors.toList());
+    }
+
+    private ResponseEntity<Response> createListHoliday(List<HolidayExcelDto> parsedObjects) {
+
+        List<CreateHolidayRequest> mappingData = mappingDataHoliday(parsedObjects);
+        List<Object> createdHolidayIds = new ArrayList<>();
+        boolean rollbackNeeded = false;
+        List<String> errorList = new ArrayList<>();
+        String errorMessage = "";
+        Integer indexError = 1;
+
+        // write log rollback
+        try {
+            for (CreateHolidayRequest createHolidayRequest : mappingData) {
+                ResponseEntity<Response> createHoliday = holidayService.create(createHolidayRequest);
+                indexError++;
+                if (!SUCCESS.equals(createHoliday.getBody().getStatus())) {
+                    errorMessage = createHoliday.getBody().getMessage();
+                    errorList.add(errorMessage);
+                    rollbackNeeded = true;
+                    break;
+                } else {
+                    // Save object holiday
+                    createdHolidayIds.add(createHoliday.getBody().getData());
+                }
+            }
+        } catch (Exception e) {
+            // write log
+            log.error("Error occurred during holiday creation: " + e.getMessage(), e);
+            rollbackNeeded = true;
+        }
+
+        // action rollback
+        if (rollbackNeeded) {
+            for (Object holidayId : createdHolidayIds) {
+                Holiday holidayModel = new Holiday();
+                BeanUtils.copyProperties(holidayId, holidayModel);
+
+                holidayRepository.delete(holidayModel);
+            }
+            HolidayExcelDto holidayExcelDto = new HolidayExcelDto();
+            holidayExcelDto.setNumericalOrder(indexError);
+            holidayExcelDto.setErrorList(errorList);
+
+            List<HolidayExcelDto> holidayExcelDtoList = new ArrayList<>();
+            holidayExcelDtoList.add(holidayExcelDto);
+
+            UploadDto<HolidayExcelDto> uploadDto = new UploadDto<>();
+            uploadDto.setDetailRecordDtos(holidayExcelDtoList);
+
+            String error = "Error import file Excel: " + errorMessage + " Row: " + indexError;
+            return responseUtil.response(ERROR, uploadDto, error);
+        } else {
+            return responseUtil.response(SUCCESS, "", "Import file success");
+        }
+    }
+
+    private List<CreateHolidayRequest> mappingDataHoliday(List<HolidayExcelDto> parsedObjects) {
+        List<CreateHolidayRequest> mappingHolidayImportResults = new ArrayList<>();
+        for (HolidayExcelDto holidayExcelDto : parsedObjects) {
+            mappingHolidayImportResults.add(mappingHoliday(holidayExcelDto));
+        }
+        return mappingHolidayImportResults;
+    }
+
+    private CreateHolidayRequest mappingHoliday(HolidayExcelDto holidayExcelDto) {
+
+        CreateHolidayRequest createHolidayRequest = new CreateHolidayRequest();
+
+        String holidayName = holidayExcelDto.getHolidayName();
+        String holidayDate = holidayExcelDto.getHolidayDate();
+
+        createHolidayRequest.setDate(convertDateFormat(holidayDate));
+        createHolidayRequest.setName(holidayName);
+        createHolidayRequest.setNationwide(true);
+        createHolidayRequest.setRepeatType(HolidayRepeatType.NONE);
+        return createHolidayRequest;
+    }
+
+    private List<HolidayExcelDto> filterValidData(List<HolidayExcelDto> parsedObjects) throws ParseException {
+        List<HolidayExcelDto> validHolidayImportResults = new ArrayList<>();
+        int index = 2;
+        for (HolidayExcelDto holidayExcelDto : parsedObjects) {
+            validateHoliday(holidayExcelDto, index);
+            if (!holidayExcelDto.isValid()) {
+                validHolidayImportResults.add(holidayExcelDto);
+            }
+            index++;
+        }
+        return validHolidayImportResults;
+    }
+
+    private HolidayExcelDto validateHoliday(HolidayExcelDto holidayExcelDto, Integer index) throws ParseException {
+
+        String holidayName = holidayExcelDto.getHolidayName();
+        String holidayDate = holidayExcelDto.getHolidayDate();
+
+        List<String> errorList = new ArrayList<>();
+        if (StringUtils.isNullOrEmpty(holidayName)) {
+            errorList.add(getMessage("holiday.name.empty"));
+        }
+        if (StringUtils.isNullOrEmpty(holidayDate)) {
+            errorList.add(getMessage("holiday.date.empty"));
+        } else {
+            Holiday holiday = holidayRepository.findByDate(DateUtil.stringToDate(convertDateFormat(holidayDate), DateUtil.FORMAT_YYYY_MM_DD, true));
+            if (Objects.nonNull(holiday)) {
+                errorList.add(getMessage("holiday.date.duplicate"));
+            }
+
+        }
+        holidayExcelDto.setNumericalOrder(index);
+        holidayExcelDto.setErrorList(errorList);
+
+        return holidayExcelDto;
+    }
+
+}
+
+```
