@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tìm hiểu về OAuth2, OpenID Connect, SAML và Kerberos - Các phương thức xác thực và ủy quyền trong ứng dụng hiện đại
+title: Tìm hiểu về OAuth2, OpenID Connect, SAML và Kerberos 
 categories: KeyCloak
 ---
 
