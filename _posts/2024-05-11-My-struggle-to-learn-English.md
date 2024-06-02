@@ -97,3 +97,81 @@ wash the dishes
 percent
 
 
+-------------------------
+
+either 
+
+hear 
+
+trousers 
+
+hurt now 
+
+thirsty 
+
+going to drink 
+
+awake 
+
+quiet 
+
+someone coming 
+
+across face 
+
+but he does 
+
+field 
+
+binocular 
+
+holding gun 
+
+spy 
+
+very clever 
+
+white jaguar 
+
+they put a key into the lock 
+
+walking away 
+
+put the pay floor. 
+
+ push the paper under the door 
+
+corridor 
+
+stairs 
+
+milions of pounds  
+
+stolen  
+
+art thieves 
+
+prisoner 
+
+stolen 
+
+come on  
+
+get it  
+
+take your gun 
+
+and this time 
+
+finish him 
+
+inspector 
+
+binoculars
+
+thief
+
+those two people are big thieves with famous paintings
+
+steal 
+
