@@ -12,7 +12,7 @@ Keycloak provides theme support for web pages and emails. This allows customizin
 
 - A theme can provide one or more types to customize different aspects of Keycloak. The types available are:
 
-+ Account - Account Console
++ Account - Account Console.
 + Admin - Admin Console
 + Email - Emails
 + Login - Login forms
