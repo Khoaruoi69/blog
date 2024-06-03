@@ -99,3 +99,6 @@ link: https://developers.redhat.com/blog/authentication-and-authorization-using-
 *Figure 13: Select the Client Roles for each user in jakarta-school.*
 
 - This concludes my demo of the Keycloak configuration.
+
+---------------------------------------------------------
+
