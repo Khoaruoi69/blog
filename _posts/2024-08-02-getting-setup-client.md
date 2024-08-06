@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started gRPC
+title: Getting Started Client gRPC
 categories: gRPC
 ---
 
